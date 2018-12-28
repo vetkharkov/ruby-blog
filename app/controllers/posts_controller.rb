@@ -11,7 +11,7 @@ class PostsController < ActionController::Base
 
   def show
   	# @post = Post.find(params[:id])
-  end	
+  end
 
   def new
   	@post = Post.new
@@ -20,9 +20,10 @@ class PostsController < ActionController::Base
   def create
   	@post = Post.new(post_params)
   	if @post.save
-  		redirect_to @post
+      redirect_to @post, flash: { success: 'Статья создана' }
   	else
-  		render :new
+      flash.now[:danger] = 'Статья не создана'
+      render :new
   	end
 
   end
@@ -32,18 +33,17 @@ class PostsController < ActionController::Base
   end
 
   def update
-  	# @post = Post.find(params[:id])
-  	if @post.update_attributes(post_params)
-  		redirect_to @post
-  	else
-  		render :edit
-  	end
+    if @post.update_attributes(post_params)
+      redirect_to @post, flash: { success: 'Статья успешно обновлена' }
+    else
+      flash.now[:danger] = 'Статья не обновлена'
+      render :edit
+    end
   end
 
   def destroy
-  	# @post = Post.find(params[:id])
-  	@post.destroy
-  	redirect_to posts_path
+    @post.destroy
+    redirect_to posts_path, flash: { success: 'Статья успешно удалена' }
   end
 
   private
