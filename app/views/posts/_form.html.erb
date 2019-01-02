@@ -9,7 +9,7 @@
 	</div>
 <% end %>
 
-<%= form_for @post do |f| %>
+<%= form_for @post, html: { multipart: true } do |f| %>
 
 	<div class='form-group'>
 		<%= f.label :title %>
@@ -25,6 +25,10 @@
 		<%= f.label :body %>
 		<%= f.text_area :body, class: 'form-control' %>
 	</div>
+
+	<div class="form-group">
+    <%= f.file_field :image %>
+  </div>
 
 	<div class='form-group'>
 		<%= f.submit t('.submit', action: @post.new_record? ? t('common.create') : t('common.edit')), class: 'btn btn-primary' %>
