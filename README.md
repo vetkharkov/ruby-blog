@@ -23,7 +23,7 @@ v4
 
 v5
 
-    -Загрузка и изменение размера изображения к посту 
+    -Загрузка и изменение размера изображения к посту
 
     -gem https://github.com/carrierwaveuploader/carrierwave
 
@@ -35,3 +35,12 @@ v5
         rails generate uploader Image
         rails g migration add_image_to_posts image:string
         rake db:migrate
+
+v6
+
+    -Добавление текстового редактора Trix
+    https://github.com/kylefox/trix
+
+    https://github.com/maclover7/trix
+
+    -Возможность добавлять изображения в текстовом редакторе
