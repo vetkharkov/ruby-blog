@@ -44,3 +44,11 @@ v6
     https://github.com/maclover7/trix
 
     -Возможность добавлять изображения в текстовом редакторе
+
+v7
+
+    -Создание тегов к статьям
+      В терминале:
+      rails g model tag name:string
+      rails g model tagging post:belongs_to tag:belongs_to
+      rake db:migrate
